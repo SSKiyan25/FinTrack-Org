@@ -55,7 +55,7 @@ class AttendanceEventLogController extends Controller
             ->orWhereEncrypted('first_name', 'like', "%$query%")
             ->orWhereEncrypted('last_name', 'like', "%$query%")
             ->orWhereEncrypted('middle_name', 'like', "%$query%")
-            ->limit(10)
+            ->limit(30)
             ->get();
 
         $logs = $logs->map(function($log) {
