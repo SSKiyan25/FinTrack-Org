@@ -50,7 +50,9 @@ return new class extends Migration
         // Remove status from the events table.
         Schema::table('events', function (Blueprint $table) {
             $table->unsignedBigInteger('semester_id');
-            $table->renameColumn('date', 'date_from');
+            // $table->renameColumn('date', 'date_from');
+            $table->dropColumn('date');
+            $table->date('date_from')->nullable();
             $table->date('date_to')->nullable();
             $table->dropColumn('status');
         });
@@ -69,14 +71,24 @@ return new class extends Migration
             $table->foreign('semester_id')->references('id')->on('semesters')->onDelete('cascade');
         });
 
+        Schema::table('event_logs', function (Blueprint $table) {
+            $table->dropForeign('event_logs_event_id_foreign');
+            $table->dropForeign('event_logs_student_id_foreign');
+
+        });
+
         // Rename the event_logs table to attendance_event_logs
         Schema::rename('event_logs', 'attendance_event_logs');
 
         // Rename the event_id column to attendance_event_id in the attendance_event_logs table.
         // Rename the student_id column to enrolled_student_id in the attendance_event_logs table.
         Schema::table('attendance_event_logs', function (Blueprint $table) {
-            $table->renameColumn('event_id', 'attendance_event_id');
-            $table->renameColumn('student_id', 'enrolled_student_id');
+            // $table->renameColumn('event_id', 'attendance_event_id');
+            $table->dropColumn('event_id');
+            $table->unsignedBigInteger('attendance_event_id');
+            // $table->renameColumn('student_id', 'enrolled_student_id');
+            $table->dropColumn('student_id');
+            $table->unsignedBigInteger('enrolled_student_id');
         });
     }
 
