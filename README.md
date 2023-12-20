@@ -3,7 +3,7 @@
 A work-in-progress demo web project implementing a QR Attendance and Finance Management System for university student organizations using Laravel 10. It allow officers to seamlessly manage their student organization's financial status.
 
 ----
-**Note:** This project is no longer maintained in lieu of ViscAMS - Viscan Attendance Management System. The updated source code is unfortunately closed-source, but for VSU students who have inquiries regarding the system, feel free to contact me at [gx.pastoril@proton.me](mailto:gx.pastoril@proton.me).
+**Note:** This project is no longer maintained in lieu of VAMS - Viscan Attendance Management System in partnership with CS3 and USSC.
 ----
 
 ## Requirements
